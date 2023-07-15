@@ -1,4 +1,6 @@
 # Ray Tracing in One Weekend
+![Ray Tracing in One Weekend](final.png)
+![Ray Tracing in One Weekend](balls.png)
 
 This repository contains my implementation and completion of the "Ray Tracing in One Weekend" series. The series, written by Peter Shirley, is a beginner-friendly guide to understanding the fundamentals of ray tracing and creating a very basic ray tracer from scratch. In this project, I followed the series and expanded upon it to deepen my understanding of computer graphics and rendering techniques.
 
@@ -30,4 +32,4 @@ To run the ray tracer and generate images, follow these steps:
 2. Make sure you have a C++ compiler that supports C++11 or higher.
 3. Compile the source code by running ```g++ main.cpp```
 4. Execute the resulting binary
-5. The ray tracer will render the scene and save the output as an ppm image file.
+5. The ray tracer will render the scene and save the output as a ppm image file.
