@@ -8,7 +8,7 @@
 class material;
 
 struct hit_record {
-    point3 p;
+    point3 start_point;
     vec3 normal;
     shared_ptr<material> mat_ptr;
     double t;
