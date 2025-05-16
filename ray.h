@@ -18,7 +18,7 @@ class ray{
             return dir; 
         }
 
-        point3 at(double t) const{
+        point3 at(float t) const{
             return orig + dir * t;
         }
 };

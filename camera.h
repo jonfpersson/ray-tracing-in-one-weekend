@@ -6,11 +6,11 @@
 class camera {
     public:
         camera(
-            point3 lookfrom,
-            point3 lookat,
-            vec3   vup,
-            double vfov, // vertical field-of-view in degrees
-            double aspect_ratio
+            const point3& lookfrom,
+            const point3& lookat,
+            const vec3& vup,
+            float vfov, // vertical field-of-view in degrees
+            float aspect_ratio
         ) {
             auto theta = degrees_to_radians(vfov);
             auto h = tan(theta/2);
@@ -28,7 +28,7 @@ class camera {
             lower_left_corner = origin - horizontal/2 - vertical/2 - w;
         }
 
-        ray get_ray(double u, double v) const {
+        ray get_ray(float u, float v) const noexcept{
             return ray(origin, lower_left_corner + u*horizontal + v*vertical - origin);
         }
 

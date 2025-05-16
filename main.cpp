@@ -115,7 +115,7 @@ int main() {
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
     // Print the execution time
-    long long total_rays = static_cast<long long>(image_height) * image_width * max_depth * samples_per_pixel;
+    int total_rays = image_height * image_width * max_depth * samples_per_pixel;
     std::cerr << "Execution time: " << duration.count() << " milliseconds" << std::endl;
     std::cerr << "Total rays: " << total_rays << std::endl;
     std::cerr << "Total rays/millisecond: " << total_rays / (duration.count()) << std::endl;
