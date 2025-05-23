@@ -18,14 +18,14 @@ class hittable_list : public hittable {
         void clear() { objects.clear(); }
         void add(shared_ptr<hittable> object) { objects.push_back(object); }
 
-        virtual bool hit(
-            const ray& r, float t_min, float t_max, hit_record& rec) const override;
+        virtual int64_t hit(
+            const ray& r, double t_min, double t_max, hit_record& rec) const override;
 
 };
 
-bool hittable_list::hit(const ray& r, float t_min, float t_max, hit_record& rec) const noexcept{
+int64_t hittable_list::hit(const ray& r, double t_min, double t_max, hit_record& rec) const noexcept{
     hit_record temp_rec;
-    bool hit_anything = false;
+    int64_t hit_anything = false;
     auto closest_so_far = t_max;
 
     for (const auto& object : objects) {

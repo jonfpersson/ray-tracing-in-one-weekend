@@ -1,9 +1,9 @@
 # Compiler and settings
 CXX := g++
 NUM_CORES := $(shell nproc)
-CXXFLAGS := -std=c++20 -Ofast -flto -march=native -mtune=native -ffunction-sections -fdata-sections -ftree-vectorize -MMD -MP -Wall -Wextra -ffast-math -funsafe-math-optimizations -fno-exceptions -fno-rtti \
+CXXFLAGS := -std=c++20 -Ofast -flto -march=x86-64 -mtune=native -ffunction-sections -fdata-sections -ftree-vectorize -MMD -MP -Wall -Wextra -ffast-math -funsafe-math-optimizations -fno-exceptions -fno-rtti \
             -fomit-frame-pointer -fno-stack-protector -ffp-contract=fast -fopenmp -funroll-loops -fprefetch-loop-arrays  -fno-math-errno -fno-ident \
-			-falign-functions=32 -falign-loops=32 -falign-jumps=32 -mavx2 -mfma -mbmi2 -DNDEBUG -pthread # -fprofile-use
+			-falign-functions=64 -falign-loops=64 -falign-jumps=64 -mavx2 -mfma -mbmi2 -DNDEBUG -pthread # -fprofile-use
 
 
 

@@ -58,5 +58,5 @@ private:
     std::queue<Task> tasks;
     std::mutex queue_mutex;
     std::condition_variable condition;
-    std::atomic<bool> stop;
+    std::atomic<int64_t> stop;
 };

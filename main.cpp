@@ -15,8 +15,8 @@ hittable_list random_scene() {
     auto ground_material = make_shared<lambertian>(color(0.5, 0.5, 0.5));
     world.add(make_shared<sphere>(point3(0,-1000,0), 1000, ground_material));
 
-    for (int a = -2; a < 2; a++) {
-        for (int b = -2; b < 2; b++) {
+    for (int64_t a = -2; a < 2; a++) {
+        for (int64_t b = -2; b < 2; b++) {
             auto choose_mat = random_double();
             point3 center(a + 0.9*random_double(), 0.2, b + 0.9*random_double());
 
@@ -52,7 +52,7 @@ hittable_list random_scene() {
     return world;
 }
 
-color ray_color(const ray& r, const hittable& world, int depth) {
+color ray_color(const ray& r, const hittable& world, int64_t depth) {
     hit_record rec;
     // If we've exceeded the ray bounce limit, no more light is gathered.
     if (depth <= 0)
@@ -78,10 +78,10 @@ int main() {
 
     // Image
     const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 400;
-    const int image_height = static_cast<int>(image_width / aspect_ratio);
-    const int samples_per_pixel = 30;
-    const int max_depth = 5;
+    const int64_t image_width = 400;
+    const int64_t image_height = static_cast<int64_t>(image_width / aspect_ratio);
+    const int64_t samples_per_pixel = 30;
+    const int64_t max_depth = 5;
 
     // World
     auto world = random_scene();
@@ -94,12 +94,12 @@ int main() {
     //printf("P3 %i %i 255", image_width, image_height);
     std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-    for (int j = image_height-1; j >= 0; --j) {
-        for (int i = 0; i < image_width; ++i) {
+    for (int64_t j = image_height-1; j >= 0; --j) {
+        for (int64_t i = 0; i < image_width; ++i) {
             //std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
            
             color pixel_color(0, 0, 0);
-            for (int s = 0; s < samples_per_pixel; ++s) {
+            for (int64_t s = 0; s < samples_per_pixel; ++s) {
                 auto u = (i + random_double()) / (image_width-1);
                 auto v = (j + random_double()) / (image_height-1);
                 ray r = cam.get_ray(u, v);
@@ -115,7 +115,7 @@ int main() {
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
     // Print the execution time
-    int total_rays = image_height * image_width * max_depth * samples_per_pixel;
+    int64_t total_rays = image_height * image_width * max_depth * samples_per_pixel;
     std::cerr << "Execution time: " << duration.count() << " milliseconds" << std::endl;
     std::cerr << "Total rays: " << total_rays << std::endl;
     std::cerr << "Total rays/millisecond: " << total_rays / (duration.count()) << std::endl;

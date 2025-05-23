@@ -8,7 +8,7 @@ struct hit_record;
 
 class material {
     public:
-        virtual bool scatter(
+        virtual int64_t scatter(
             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
         ) const = 0;
 };
@@ -18,7 +18,7 @@ class lambertian : public material {
     public:
         lambertian(const color& a) : albedo(a) {}
 
-        virtual bool scatter(
+        virtual int64_t scatter(
             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
         ) const override {
             auto scatter_direction = rec.normal + random_unit_vector();
@@ -38,7 +38,7 @@ class metal : public material {
     public:
         metal(const color& a) : albedo(a) {}
 
-        virtual bool scatter(
+        virtual int64_t scatter(
             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
         ) const override {
             vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal);
